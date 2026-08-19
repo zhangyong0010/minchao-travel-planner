@@ -181,4 +181,4 @@ city.addEventListener('change',()=>{view='places';currentCategory='all';document
 $('#intercityButton').addEventListener('click',()=>{view='intercity';document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));render()});
 document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{if(view==='trip')captureTripSetupDraft();view=b.dataset.view;document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x===b));render()}));
 updateTripCount();updateCategoryMenu();render();
-if(location.protocol!=='file:'&&'serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js');
+if(location.protocol!=='file:'&&'serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=27',{updateViaCache:'none'}).then(registration=>registration.update()).catch(()=>{});
