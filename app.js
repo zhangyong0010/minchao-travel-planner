@@ -184,8 +184,9 @@ function render(){
 }
 city.addEventListener('change',()=>{view='places';currentCategory='all';document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x.dataset.view==='places'));updateCategoryMenu();render()});
 $('#intercityButton').addEventListener('click',()=>{view='intercity';document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));render()});
+$('#aboutButton').addEventListener('click',()=>{if(view==='trip')captureTripSetupDraft();view='about';document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));render()});
 document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{if(view==='trip')captureTripSetupDraft();view=b.dataset.view;document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x===b));render()}));
 updateTripCount();updateCategoryMenu();render();
 document.addEventListener('submit',e=>{if(e.target.id!=='customPlaceForm')return;e.preventDefault();e.stopImmediatePropagation();const form=new FormData(e.target),name=(form.get('customName')||'').trim();if(!name)return;trip.customPlaces.push(makeCustomPlace({name,city:form.get('customCity'),category:form.get('customCategory'),note:form.get('customNote')}));saveTrip();render()},true);
 document.addEventListener('change',e=>{const select=e.target;if(!select.matches('[data-day-hotel]')||select.value!=='__custom__')return;e.stopImmediatePropagation();const day=trip.days.find(d=>d.date===select.dataset.dayHotel),name=prompt('请输入住宿名称');if(!name?.trim()){render();return}const hotel=makeCustomPlace({name,city:day.city,category:'stay',note:'由你手动添加的住宿；请在苹果地图确认位置。'});trip.customPlaces.push(hotel);day.hotelId=hotel.id;saveTrip();render()},true);
-if(location.protocol!=='file:'&&'serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=29',{updateViaCache:'none'}).then(registration=>registration.update()).catch(()=>{});
+if(location.protocol!=='file:'&&'serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=30',{updateViaCache:'none'}).then(registration=>registration.update()).catch(()=>{});
