@@ -106,3 +106,7 @@ nav{overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav
 /* v29: shareable Markdown and a print-ready, colour-coded PDF export */
 .trip-tools .markdown-export{border-color:#9a87bf;background:#f2edfb;color:#5d487e}.trip-tools .pdf-export{border-color:#b86138;background:#fff0e8;color:#963f1e}.trip-tools .markdown-export,.trip-tools .pdf-export{gap:5px}
 @media(max-width:480px){.trip-tools button,.import-button{font-size:12px}.trip-tools .markdown-export,.trip-tools .pdf-export{grid-column:span 1}.trip-tools>div:last-child{grid-template-columns:1fr 1fr}}
+
+/* v30: keep the four export actions balanced on a phone, and free the main nav */
+.header-title-row{display:flex;align-items:center;justify-content:space-between;gap:12px}.header-title-row h1{margin:7px 0}.header-title-row button{flex:0 0 auto;padding:6px 11px;border:1px solid rgba(255,255,255,.45);border-radius:999px;background:rgba(8,46,33,.2);color:#fff;font:inherit;font-size:12px;font-weight:750;cursor:pointer}
+@media(max-width:600px){.trip-tools>div:last-child{display:grid!important;width:100%;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.trip-tools>div:last-child>button,.trip-tools>div:last-child>.import-button{width:100%!important;min-width:0!important;height:46px;min-height:46px;margin:0!important;padding:0 6px;text-align:center;font-size:12px}.trip-tools>div:last-child>button:last-child{grid-column:auto!important}.header-title-row h1{font-size:27px}.header-title-row button{min-height:34px;padding:5px 10px}}
